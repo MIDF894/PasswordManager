@@ -1,0 +1,166 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PasswordManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svg="clr-namespace:Avalonia.Svg;assembly=Avalonia.Svg"
+        mc:Ignorable="d" d:DesignWidth="1980" d:DesignHeight="1080" MinWidth="800" MinHeight="800"
+        x:Class="PasswordManager.MainWindow"
+        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        Title="PasswordManager"
+        WindowState="Maximized"
+        Background="#0A0A0A"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaChromeHints="NoChrome">
+
+    <DockPanel LastChildFill="True">
+    <Grid Name="TitleBar" Classes="ToolBar"
+          Background="#0A0A0A"
+          Height="40"
+          DockPanel.Dock="Top"
+          ColumnDefinitions="Auto, *, Auto">
+        
+        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10, 3, 0, 0">
+            <TextBlock Text="PasswordManager" LetterSpacing="0" FontWeight="ExtraLight" FontSize="18" Foreground="White" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0, 5, 0, 0">
+                <Button x:Name="MinimizeButton" Height="35" Width="60" Background="Transparent" Foreground="White">
+				    <svg:Svg Path="/Assets/CollapseIcon.svg"/>
+                </Button>
+                <Button x:Name="MaximizeButton" Height="35" Width="60" Background="Transparent" Foreground="White">
+				    <svg:Svg Path="/Assets/CollapseWindowIcon.svg"/>
+                </Button>
+                <Button x:Name="CloseButton" Height="35" Width="60" Background="Transparent" Foreground="White">
+				    <svg:Svg Path="/Assets/CancelLogo.svg"/>
+                </Button>
+            </StackPanel>
+    </Grid>
+
+    <Grid Focusable="True" x:Name="MainContent" Background="#0A0A0A">
+        <Grid.ColumnDefinitions>
+			<ColumnDefinition Width="235"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border BoxShadow="0.8 0 0 0 rgba(216, 216, 218, 0.28)" Grid.Column="0" Background="#141414">
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+
+					<svg:Svg Path="/Assets/Logo.svg" Width="162" Height="162" Margin="37, 10, 36, 0"/>
+                    
+                    <Rectangle Height="1" 
+                       Fill="rgba(255, 255, 255, 0.1)" 
+                       VerticalAlignment="Center" 
+                       Margin="23, 0, 23, 27"/>
+                        
+                    <Button x:Name="AddField" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+                            HorizontalAlignment="Center" Background="#2C2C2C" Width="206" Height="70"
+                            CornerRadius="14" Margin="15, 0, 14, 25" Padding="0">
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+							<svg:Svg Path="/Assets/Plus.svg" Width="30" Height="31" Margin="17, 0, 16, 0"/>
+                            <TextBlock TextAlignment="Center" LetterSpacing="0" FontWeight="ExtraLight" FontSize="25" Foreground="#F7F7F7" Text="Добавить" Margin="0, 0, 28, 0"/>
+                        </StackPanel>                                              
+								
+                    </Button>
+
+                    <Button x:Name="EditField" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+                            HorizontalAlignment="Center" Background="#2C2C2C" Width="206" Height="70"
+                            CornerRadius="14" Margin="15, 0, 14, 25" Padding="0">
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+							<svg:Svg Path="/Assets/Edit.svg" Width="47" Height="47" Margin="8, 0, 6, 0"/>
+                            <TextBlock VerticalAlignment="Center" TextAlignment="Center" LetterSpacing="0" FontWeight="ExtraLight" FontSize="25" Foreground="#F7F7F7" Text="Изменить" Margin="0, 0, 28, 0"/>
+                        </StackPanel>                                              
+								
+                    </Button>
+
+                    <Button x:Name="DelField" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+                            HorizontalAlignment="Center" Background="#2C2C2C" Width="206" Height="70"
+                            CornerRadius="14" Margin="15, 0, 14, 25" Padding="0">
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+							<svg:Svg Path="/Assets/delete.svg" Width="52" Height="51" Margin="10, 0, 16, 0" VerticalAlignment="Center"/>
+                            <TextBlock TextAlignment="Center" LetterSpacing="0" FontWeight="ExtraLight" FontSize="25" Foreground="#F7F7F7" Text="Удалить" VerticalAlignment="Center" Margin="0, 0, 0, 0"/>
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="LockFields" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+                            HorizontalAlignment="Center" Background="#2C2C2C" Width="206" Height="70"
+                            CornerRadius="14" Margin="15, 0, 14, 25" Padding="0">
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+							<svg:Svg Path="/Assets/Lock.svg" Width="51" Height="50" Margin="12, 0, 16, 0" VerticalAlignment="Center"/>
+                            <TextBlock TextAlignment="Center" LetterSpacing="0" FontWeight="ExtraLight" FontSize="25" Foreground="#F7F7F7" Text="Закрыть" VerticalAlignment="Center" Margin="0, 0, 28, 0"/>
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="UnLockFields" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+                            HorizontalAlignment="Center" Background="#2C2C2C" Width="206" Height="70"
+                            CornerRadius="14" Margin="15, 0, 14, 0" Padding="0">
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+							<svg:Svg Path="/Assets/Unlock.svg" Width="45" Height="42" Margin="18, 0, 15, 0" VerticalAlignment="Center"/>
+                            <TextBlock TextAlignment="Center" LetterSpacing="0" FontWeight="ExtraLight" FontSize="25" Foreground="#F7F7F7" Text="Открыть" VerticalAlignment="Center" Margin="0, 0, 28, 0"/>
+                        </StackPanel>
+
+                    </Button>
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+
+                    <Rectangle Height="1" 
+                           Fill="rgba(255, 255, 255, 0.1)" 
+                           VerticalAlignment="Center" 
+                           Margin="23, 0, 23, 0"/>
+
+                    <Button x:Name="btnExit" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+                            HorizontalAlignment="Center" Background="rgba(55, 133, 241, 0.2)" Width="206" Height="70"
+                            CornerRadius="14" Margin="15, 22, 14, 28" Padding="0">
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+						    <svg:Svg Path="/Assets/Exit.svg" Width="45" Height="42" Margin="14, 0, 15, 0" VerticalAlignment="Center"/>
+                            <TextBlock LetterSpacing="0" FontWeight="ExtraLight" FontSize="20" Foreground="#F7F7F7" 
+                                        Text="Закрыть&#x0a;приложение" TextAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 28, 0"/>
+                        </StackPanel>
+
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1">
+			<Grid.RowDefinitions>
+			    <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="rgba(216, 216, 218, 0.2)" BorderThickness="0, 0, 0, 1" Grid.Row="0" Background="#141414">
+
+				<Grid Background="#141414" Grid.Row="0">
+					
+                </Grid>
+            </Border>
+
+			<ListBox SelectionMode="Single" x:Name="Div" CornerRadius="15"
+                    Margin="28, 37, 32, 27" BorderBrush="rgba(255, 255, 255, 0.1)" BorderThickness="1"
+                    Background="#1F1F1F" Grid.Row="1"/>
+        </Grid>
+        
+    </Grid>
+</DockPanel>
+
+</Window>

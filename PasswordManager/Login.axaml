@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PasswordManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svg="clr-namespace:Avalonia.Svg;assembly=Avalonia.Svg"
+        mc:Ignorable="d" d:DesignWidth="1980" d:DesignHeight="1080" MinWidth="610" MinHeight="500" Width="610" Height="500"
+        x:Class="PasswordManager.Login"
+        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        Title="Вход" CanResize="False"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaChromeHints="NoChrome"
+        FontFamily="Onest">
+
+    <Border Background="#0A0A0A" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)"
+            CornerRadius="15">
+        <DockPanel LastChildFill="True">
+            <Border Name="TitleBar" Classes="ToolBar"
+                    Background="#131313"
+                    Height="40"
+                    DockPanel.Dock="Top" CornerRadius="15, 15, 0, 0">
+                <Grid ColumnDefinitions="Auto, *, Auto">
+        
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10, 3, 0, 0">
+                        <TextBlock Text="Вход" LetterSpacing="0" FontWeight="Regular" FontSize="18" Foreground="White" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+                    </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0, 5, 0, 0">
+                            <Button x:Name="Shutdown" Height="35" Width="60" Background="Transparent" Foreground="White" CornerRadius="0, 15, 0, 0">
+				                <svg:Svg Path="/Assets/CancelLogo.svg"/>
+                            </Button>
+                        </StackPanel>
+                </Grid>
+            </Border>
+
+            
+            <Border Focusable="True" Margin="30" Background="#1F1F1F" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" CornerRadius="15">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Text="Мастер пароль" HorizontalAlignment="Center" LetterSpacing="0"
+                               FontWeight="Light" FontSize="38" Foreground="#FFFFFF" Margin="0, 58, 0, 19"/>
+
+                    <TextBox x:Name="fMasterPassword" SelectionBrush="Gray" SelectionForegroundBrush="#F7F7F7"
+                             HorizontalAlignment="Center" PasswordChar="*"
+                             Padding="11" FontSize="18" Width="470" Height="140" 
+                             Watermark="Пароль станет основным в шифровании после того, как вы добавите первое поле с данными.&#x0a;Минимальная длина - 16 символов.&#x0a;При несовпадении пароля - приложение завершает работу."
+                             BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" 
+                             CornerRadius="9" FontWeight="ExtraLight" LetterSpacing="0"
+                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 0, 27">
+
+						<TextBox.Background>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#FF1F1F1F" />
+                                    <GradientStop Offset="1" Color="#33132D44" />
+                                </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+
+                    <Button x:Name="btnMasterPassword" Width="206" Height="70" Foreground="#FFFFFF" Content="Подтвердить" HorizontalAlignment="Center"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                            BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" CornerRadius="14"
+                            FontWeight="ExtraLight" FontSize="26">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%" Opacity="0.24">
+                                <GradientStop Offset="0" Color="#3785F1" />
+                                <GradientStop Offset="1" Color="#2C2C2C" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+        </DockPanel>
+    </Border>
+</Window>

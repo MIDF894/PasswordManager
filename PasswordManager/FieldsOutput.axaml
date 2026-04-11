@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PasswordManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svg="clr-namespace:Avalonia.Svg;assembly=Avalonia.Svg"
+        mc:Ignorable="d" d:DesignWidth="1980" d:DesignHeight="1080" MinWidth="700" MinHeight="600" Width="700" Height="600"
+        x:Class="PasswordManager.FieldsOutput"
+        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        Title="'Название поля'"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaChromeHints="NoChrome"
+        FontFamily="Onest">
+
+    <Border Background="#0A0A0A"
+            Classes="Wrapper">
+        <DockPanel LastChildFill="True">
+            <Grid x:Name="TitleBar" 
+                Background="#131313"
+                Height="40"
+                DockPanel.Dock="Top" ColumnDefinitions="Auto, *, Auto">
+        
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10, 3, 0, 0">
+                    <TextBlock x:Name="FieldName" Text="'Название поля'" LetterSpacing="0" FontWeight="Regular" FontSize="18" Foreground="White" 
+                               VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0, 5, 0, 0">
+
+                    <Button x:Name="MinimizeButton" Height="35" Width="60" Background="Transparent" Foreground="White">
+				        <svg:Svg Path="/Assets/CollapseIcon.svg"/>
+                    </Button>
+
+                    <Button x:Name="MaximizeButton" Height="35" Width="60" Background="Transparent" Foreground="White">
+				        <svg:Svg Path="/Assets/CollapseWindowIcon.svg"/>
+                    </Button>
+
+                    <Button x:Name="Shutdown" Height="35" Width="60" Background="Transparent" Foreground="White">
+				        <svg:Svg Path="/Assets/CancelLogo.svg"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            
+            <Border Focusable="True" Margin="30" Background="#1F1F1F" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" CornerRadius="15">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+                    <TextBlock Text="Идентификационные данные" LetterSpacing="0"
+                               FontWeight="ExtraLight" FontSize="20" Foreground="#FFFFFF" Margin="30, 53, 0, 6"/>
+
+                    <TextBox x:Name="FOutputData" SelectionBrush="Gray" SelectionForegroundBrush="#F7F7F7" HorizontalAlignment="Center"
+                             Padding="11" FontSize="18" Width="541" Height="261" IsReadOnly="True" CaretBrush="Transparent"
+                             BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" 
+                             CornerRadius="9" FontWeight="ExtraLight" LetterSpacing="0"
+                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 0, 26">
+
+						<TextBox.Background>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                    <GradientStop Offset="0" Color="#FF1F1F1F" />
+                                    <GradientStop Offset="1" Color="#33132D44" />
+                                </LinearGradientBrush>
+                        </TextBox.Background>
+                    </TextBox>
+
+                    <TextBlock Text="Пароль" LetterSpacing="0"
+                               FontWeight="ExtraLight" FontSize="20" Foreground="#FFFFFF" Margin="30, 0, 0, 6"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                        <TextBox x:Name="FOutputEndValue" SelectionBrush="Gray" SelectionForegroundBrush="#F7F7F7" 
+                                 VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                                 Padding="11" FontSize="18" Width="471" Height="60" MaxLength="100"
+                                 BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" 
+                                 IsReadOnly="True" CaretBrush="Transparent"
+                                 CornerRadius="9" FontWeight="ExtraLight" LetterSpacing="0"
+                                 TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 10, 0">
+
+						    <TextBox.Background>
+                                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                        <GradientStop Offset="0" Color="#FF1F1F1F" />
+                                        <GradientStop Offset="1" Color="#33132D44" />
+                                    </LinearGradientBrush>
+                            </TextBox.Background>
+                        </TextBox>
+
+                       <Button x:Name="btnCopyEndValue" Width="60" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Background="rgba(115, 115, 115, 0.5)"
+                               CornerRadius="9" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" >
+                           <svg:Svg Path="/Assets/Copy.svg"/>                           						   
+                       </Button>
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DockPanel>
+    </Border>
+
+
+</Window>
