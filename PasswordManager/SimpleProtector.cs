@@ -44,10 +44,7 @@ namespace PasswordManager
                         desktop.Shutdown();
                     }
                 }
-
             }
-            //using var aesGcm = new AesGcm(key);
-            //aesGcm.Encrypt(nonce, plainBytes, cipherText, tag);
 
             byte[] result = salt.Concat(nonce).Concat(tag).Concat(cipherText).ToArray();
 
@@ -81,26 +78,9 @@ namespace PasswordManager
                 }
                 catch
                 {
-                    MessageBox.Show("This is a traditional message box with an \"OK\" button.", "Traditional 1", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                    {
-                        desktop.Shutdown();
-                    }
+                    return null;
                 }
             }
-
-            //using var aesGcm = new AesGcm(key);
-            //byte[] decryptedBytes = new byte[cipherText.Length];
-            //try
-            //{
-            //    aesGcm.Decrypt(nonce, cipherText, tag, decryptedBytes);
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Incorrect password or corrupted data.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    Application.Current.Shutdown();
-            //}
 
             CryptographicOperations.ZeroMemory(key);
             CryptographicOperations.ZeroMemory(cipherText);

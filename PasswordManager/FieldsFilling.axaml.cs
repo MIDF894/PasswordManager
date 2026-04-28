@@ -26,32 +26,6 @@ public partial class FieldsFilling : Window
         btnAddorEditFields.Click += EnterInput_Click;
     }
 
-    protected override void OnKeyDown(KeyEventArgs e)
-    {
-        base.OnKeyDown(e);
-
-        if (e.Key == Key.Escape)
-        {
-
-            FName.Clear();
-            FIData.Clear();
-            FEndValue.Clear();
-            this.Close(false);
-        }
-    }
-
-    private void EnterInput_Click(object sender, RoutedEventArgs e)
-    {
-        if (string.IsNullOrWhiteSpace(FName.Text) || string.IsNullOrWhiteSpace(FIData.Text) || string.IsNullOrWhiteSpace(FEndValue.Text))
-        {
-            MessageBox.Show("Input cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-        else
-        {
-            this.Close(true);
-        }
-    }
-
     private void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         if (e.ClickCount == 1)

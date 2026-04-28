@@ -25,7 +25,7 @@
                 DockPanel.Dock="Top" ColumnDefinitions="Auto, *, Auto">
         
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10, 3, 0, 0">
-                    <TextBlock Text="Заполненеие полей" LetterSpacing="0" FontWeight="Regular" FontSize="18" Foreground="White" 
+                    <TextBlock x:Name="TitleBarName" Text="Заполнение полей" LetterSpacing="0" FontWeight="Regular" FontSize="18" Foreground="White" 
                                VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
                 </StackPanel>
 
