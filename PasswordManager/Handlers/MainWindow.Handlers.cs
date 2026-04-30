@@ -271,20 +271,23 @@ namespace PasswordManager
                 if (result == true)
                 {
                     M = MasterPassword.fMasterPassword.Text.Secure();
-                }
+                    if (Protector.Decrypt(ReadSecureText(), M.UnSecure()) == null)
+                    {
+                        await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                        {
+                            desktop.Shutdown(0);
+                        }
+                        return;
+                    }
+                } 
+                else if (result == false)
+                {
+                    return;
+                } 
 
                 MasterPassword = null;
-
-                if (Protector.Decrypt(ReadSecureText(), M.UnSecure()) == null)
-                {
-                    await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                    {
-                        desktop.Shutdown(0);
-                    }
-                    return;
-                }
 
                 MessageBox.Show("Доступ к полям открыт.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
