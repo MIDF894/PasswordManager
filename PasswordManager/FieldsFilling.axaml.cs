@@ -26,6 +26,14 @@ public partial class FieldsFilling : Window
         btnAddorEditFields.Click += EnterInput_Click;
     }
 
+    private void Input_AttachedToVisualTree(object? sender, Avalonia.VisualTreeAttachmentEventArgs e)
+    {
+        if (sender is TextBox textBox)
+        {
+            textBox.Focus();
+        }
+    }
+
     private void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         if (e.ClickCount == 1)

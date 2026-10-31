@@ -14,6 +14,7 @@ public partial class Login : Window
     {
         InitializeComponent();
 
+
         this.FindControl<Button>("Shutdown").Click += (_, _) =>
         {
             this.Close(false);
@@ -23,4 +24,13 @@ public partial class Login : Window
 
         fMasterPassword.MaxLength = 128;
     }
+
+    private void Input_AttachedToVisualTree(object? sender, Avalonia.VisualTreeAttachmentEventArgs e)
+    {
+        if (sender is TextBox textBox)
+        {
+            textBox.Focus();
+        }
+    }
+
 }

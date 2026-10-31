@@ -46,13 +46,15 @@
             <Border Focusable="True" Margin="30" Background="#1F1F1F" BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" CornerRadius="15">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock Text="Название поля" LetterSpacing="0"
-                               FontWeight="ExtraLight" FontSize="20" Foreground="#FFFFFF" Margin="9, 58, 0, 6"/>
+                               FontWeight="ExtraLight" FontSize="20" 
+                               Foreground="#FFFFFF" Margin="9, 58, 0, 6"/>
 
                     <TextBox x:Name="FName" SelectionBrush="Gray" SelectionForegroundBrush="#F7F7F7" HorizontalAlignment="Center"
                              Padding="11" FontSize="18" Width="470" Height="50" MaxLength="100"
                              BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" VerticalContentAlignment="Center"
                              CornerRadius="9" FontWeight="ExtraLight" LetterSpacing="0"
-                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 0, 27">
+                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 0, 27"
+                             Focusable="True" AttachedToVisualTree="Input_AttachedToVisualTree">
 
 						<TextBox.Background>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
@@ -86,7 +88,7 @@
                              Padding="11" FontSize="18" Width="470" Height="50" MaxLength="100"
                              BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" 
                              CornerRadius="9" FontWeight="ExtraLight" LetterSpacing="0"
-                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 0, 56">
+                             TextWrapping="Wrap" AcceptsReturn="False" Margin="0, 0, 0, 56">
 
 						<TextBox.Background>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
@@ -99,7 +101,7 @@
                     <Button x:Name="btnAddorEditFields" Width="470" Height="70" Foreground="#FFFFFF" Content="Добавить поле" HorizontalAlignment="Center"
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                             BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" CornerRadius="9"
-                            FontWeight="ExtraLight" FontSize="26">
+                            FontWeight="ExtraLight" FontSize="26" IsDefault="True">
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%" Opacity="0.24">
                                 <GradientStop Offset="0" Color="#3785F1" />

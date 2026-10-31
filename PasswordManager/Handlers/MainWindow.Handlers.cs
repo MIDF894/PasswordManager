@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Threading;
 using CustomMessageBox.Avalonia;
 using ExCSS;
 using System;
@@ -58,7 +59,7 @@ namespace PasswordManager
 
             if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PasswordManager", "Field.data")))
             {
-                MessageBox.Show("Если вы потеряете ключ, единственный способ сбросить пароль — удалить файл данных.", "Важная информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Если вы потеряете ключ, единственный способ сбросить пароль — удалить файл данных.", "Важная информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }
 
@@ -68,7 +69,7 @@ namespace PasswordManager
             }
             catch
             {
-                await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 
                 if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 {
@@ -84,6 +85,8 @@ namespace PasswordManager
                 Item.Content = f.FieldName;
                 Div.Items.Add(Item);
             }
+
+            Div.Focus();
 
             MasterPassword = null;
         }
@@ -125,7 +128,7 @@ namespace PasswordManager
 
             if (Div.SelectedIndex == -1)
             {
-                MessageBox.Show("Сначала выберите поле.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Сначала выберите поле.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {
@@ -165,7 +168,7 @@ namespace PasswordManager
         {
             if (Div.SelectedIndex == -1)
             {
-                MessageBox.Show("Сначала выберите поле.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Сначала выберите поле.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {
@@ -187,6 +190,7 @@ namespace PasswordManager
                     }
                     Div.Items.Remove(Div.SelectedItem);
                 }
+                Div.Focus();
             }
         }
 
@@ -219,7 +223,7 @@ namespace PasswordManager
                 }
                 catch
                 {
-                    await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 
                     if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                     {
@@ -243,14 +247,14 @@ namespace PasswordManager
         {
             if (isFieldsPrivate)
             {
-                MessageBox.Show("Поля уже закрыты.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Поля уже закрыты.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {
                 M.Clear();
                 M.Dispose();
                 M = null;
-                MessageBox.Show("Доступ к полям закрыт.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Доступ к полям закрыт.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 
                 isFieldsPrivate = true;
                 AddField.IsVisible = false;
@@ -273,7 +277,7 @@ namespace PasswordManager
                     M = MasterPassword.fMasterPassword.Text.Secure();
                     if (Protector.Decrypt(ReadSecureText(), M.UnSecure()) == null)
                     {
-                        await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        await MessageBox.Show("Пароль неверный.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 
                         if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                         {
@@ -289,7 +293,7 @@ namespace PasswordManager
 
                 MasterPassword = null;
 
-                MessageBox.Show("Доступ к полям открыт.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Доступ к полям открыт.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 
                 isFieldsPrivate = false;
                 AddField.IsVisible = true;
@@ -301,7 +305,7 @@ namespace PasswordManager
             }
             else
             {
-                MessageBox.Show("Поля уже открыты.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Поля уже открыты.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
     }

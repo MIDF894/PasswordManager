@@ -36,6 +36,47 @@ namespace PasswordManager
             btnExit.Click += btnExit_Click;
         }
 
+        private async void Window_KeyDown(object? sender, KeyEventArgs e)
+        {
+            bool handled = true;
+
+            switch (e.Key, e.KeyModifiers)
+            {
+                case (Key.A, KeyModifiers.Alt):
+                    AddField_Click(this, null);
+                    break;
+
+                case (Key.Enter, KeyModifiers.None):
+                    ListBoxItem_DoubleTapped(this, null);
+                    break;
+
+                case (Key.Delete, KeyModifiers.None):
+                    DelField_Click(this, null);
+                    break;
+
+                case (Key.E, KeyModifiers.Alt):
+                    EditField_Click(this, null);
+                    break;
+
+                case (Key.L, KeyModifiers.Alt):
+                    LockFields_Click(this, null);
+                    break;
+
+                case (Key.U, KeyModifiers.Alt):
+                    UnLockFields_Click(this, null);
+                    break;
+
+                default:
+                    handled = false;
+                    break;
+            }
+
+            if (handled)
+            {
+                e.Handled = true;
+            }
+        }
+
         private async void btnExit_Click(object sender, RoutedEventArgs e)
         {
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)

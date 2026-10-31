@@ -49,7 +49,8 @@
                              Watermark="Пароль станет основным в шифровании после того, как вы добавите первое поле с данными.&#x0a;Минимальная длина - 16 символов.&#x0a;При несовпадении пароля - приложение завершает работу."
                              BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" 
                              CornerRadius="9" FontWeight="ExtraLight" LetterSpacing="0"
-                             TextWrapping="Wrap" AcceptsReturn="True" Margin="0, 0, 0, 27">
+                             TextWrapping="Wrap" AcceptsReturn="False" Margin="0, 0, 0, 27"
+                             Focusable="True" AttachedToVisualTree="Input_AttachedToVisualTree">
 
 						<TextBox.Background>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
@@ -62,7 +63,7 @@
                     <Button x:Name="btnMasterPassword" Width="206" Height="70" Foreground="#FFFFFF" Content="Подтвердить" HorizontalAlignment="Center"
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                             BorderThickness="1" BorderBrush="rgba(255, 255, 255, 0.1)" CornerRadius="14"
-                            FontWeight="ExtraLight" FontSize="26">
+                            FontWeight="ExtraLight" FontSize="26" IsDefault="True">
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%" Opacity="0.24">
                                 <GradientStop Offset="0" Color="#3785F1" />

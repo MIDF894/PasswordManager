@@ -27,7 +27,7 @@ namespace PasswordManager
         {
             if (string.IsNullOrWhiteSpace(FName.Text) || string.IsNullOrWhiteSpace(FIData.Text) || string.IsNullOrWhiteSpace(FEndValue.Text))
             {
-                MessageBox.Show("Input cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Input cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             else
             {
